@@ -1,0 +1,21 @@
+{% extends 'usuarios/base.html' %}
+<title>Cadastro!</title>
+{% block conteudo %}
+<form action="{% url 'epis' %}" method="post">
+    {% csrf_token %}
+    <div style="text-align: center;" class='container'>
+        <h1>Cadastro de Epis</h1>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{% if message.tags %} {{ message.tags }} {% endif %}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        Nome <input name="nome" type="text" required>
+        Quantidade <input name="quantidade" type="quantidade" required>
+        Valor <input name="valor" type="valor" required>
+        <button class="form-control-sm" type="submit">Cadastrar</button>
+    </div>
+</form>
+{% endblock %}
